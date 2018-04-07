@@ -221,6 +221,7 @@ open class BTNavigationDropdownMenu: UIView {
     }
 
     open var didSelectItemAtIndexHandler: ((_ indexPath: Int) -> ())?
+    open var menuToggled: ((_ isShown: Bool) -> ())?
     open var isShown: Bool!
 
     fileprivate weak var navigationController: UINavigationController?
@@ -521,6 +522,7 @@ open class BTNavigationDropdownMenu: UIView {
     }
     
     func menuButtonTapped(_ sender: UIButton) {
+        self.menuToggled!(self.isShown)
         self.isShown == true ? hideMenu() : showMenu()
     }
 }
