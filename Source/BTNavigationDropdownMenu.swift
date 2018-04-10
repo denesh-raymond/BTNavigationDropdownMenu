@@ -433,6 +433,9 @@ open class BTNavigationDropdownMenu: UIView {
     }
 
     func showMenu() {
+        // Notify listener
+        self.menuToggled!(self.isShown)
+        
         self.menuWrapper.frame.origin.y = self.navigationController!.navigationBar.frame.maxY
 
         self.isShown = true
@@ -475,6 +478,9 @@ open class BTNavigationDropdownMenu: UIView {
     }
 
     func hideMenu() {
+        // Notify listener
+        self.menuToggled!(self.isShown)
+        
         // Rotate arrow
         self.rotateArrow()
 
@@ -522,7 +528,6 @@ open class BTNavigationDropdownMenu: UIView {
     }
     
     func menuButtonTapped(_ sender: UIButton) {
-        self.menuToggled!(self.isShown)
         self.isShown == true ? hideMenu() : showMenu()
     }
 }
